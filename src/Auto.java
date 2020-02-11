@@ -6,6 +6,7 @@ abstract public class Auto {
     private String barva;
     private Float obsahMotoru;
     private Startovani startovani;
+    private Integer pocetSedadel;
 
     public Auto(String nazev, int pocetKol, Rizeni rizeniStrana, String barva, Float obsahMotoru) {
         this.nazev = nazev;
@@ -15,7 +16,16 @@ abstract public class Auto {
         this.obsahMotoru = obsahMotoru;
     }
 
-    abstract public void nastaveniStartovani();
+    abstract protected int countVolnaSedadla();
+
+    public void systemOutPrint() {
+
+        System.out.println(String.format(" %s[%s] - volna mista - %s", getNazev(), getBarva(), getVolnaSedadla()));
+    }
+
+    public int getVolnaSedadla() {
+        return this.countVolnaSedadla();
+    }
 
     public String getNazev() {
         return nazev;
@@ -63,5 +73,13 @@ abstract public class Auto {
 
     public void setObsahMotoru(Float obsahMotoru) {
         this.obsahMotoru = obsahMotoru;
+    }
+
+    public Integer getPocetSedadel() {
+        return pocetSedadel;
+    }
+
+    public void setPocetSedadel(Integer pocetSedadel) {
+        this.pocetSedadel = pocetSedadel;
     }
 }

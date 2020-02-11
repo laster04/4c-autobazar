@@ -2,13 +2,14 @@ public class Nakladani extends Auto {
 
     private String typNakladu;
 
-    public Nakladani(String nazev, int pocetKol, Rizeni rizeniStrana, String barva, Float obsahMotoru) {
+    public Nakladani(String nazev, int pocetKol, Rizeni rizeniStrana, String barva, Float obsahMotoru, int pocetSedadel) {
         super(nazev, pocetKol, rizeniStrana, barva, obsahMotoru);
+        this.setPocetSedadel(pocetSedadel);
     }
 
     @Override
-    public void nastaveniStartovani() {
-
+    protected int countVolnaSedadla() {
+        return this.getPocetSedadel() - 1;
     }
 
     public String getTypNakladu() {
